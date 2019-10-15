@@ -1,6 +1,3 @@
-### Code
-    Improved Graph Convolution Network with Feature Encoding
-
 ### Improved Graph Convolution Network
     1. First Order Chebyshev Polynomial Approximation for Spectral-Based Graph Convolution Network
     2. Faster training, no need for expensive Eigen Decomposition
@@ -18,3 +15,7 @@
 ### Temporal Mapping
     1. Linear PixMat and RandMat
     2. Nonlinear PixMat and RandMat
+    
+### Data
+    1. AVIRIS spectra and metadata file for 2013 Spring and 2014 Spring
+    2. aggregated 2013 Spring polygon-level feature 
