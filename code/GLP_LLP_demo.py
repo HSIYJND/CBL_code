@@ -28,8 +28,7 @@ def demo_ver3(seed = 0, train_date = "130411", split = 0):
     
     partial_labels = labels.copy()
     partial_labels[test_indices] = -1
-    
-    
+
     train_indices = np.where(partial_labels != -1)[0]
     test_indices = np.where(partial_labels == -1)[0]
     train_data, train_label = data[train_indices], labels[train_indices]

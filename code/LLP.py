@@ -183,7 +183,7 @@ def demo(seed = 0, per = 0.5, alpha = 0.99, max_iter = 1000, threshold = 0.001,
     print(accu)
     return accu
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # hard = []
     # soft = []
     # for i in range(100):
@@ -192,17 +192,17 @@ if __name__ == "__main__":
     # print("hard clamping, mean", np.mean(hard), ",std:", np.std(hard))
     # print("soft clamping, mean", np.mean(soft), ",std:", np.std(soft))
 
-    for i in range(10):
+    # for i in range(10):
 
-        print("allow negative weights")
-        demo(seed = i, per = 0.5, alpha = 0.99, max_iter = 50, threshold = 0.001, 
-                           n_neighbors = 7, allow_negative = True)
-        demo(seed = i, per = 0.5, alpha = 1, max_iter = 50, threshold = 0.001,
-                           n_neighbors = 7, allow_negative = True)
+    #     print("allow negative weights")
+    #     demo(seed = i, per = 0.5, alpha = 0.99, max_iter = 50, threshold = 0.001, 
+    #                        n_neighbors = 7, allow_negative = True)
+    #     demo(seed = i, per = 0.5, alpha = 1, max_iter = 50, threshold = 0.001,
+    #                        n_neighbors = 7, allow_negative = True)
         
-        print("non-negative weights")
-        demo(seed = i, per = 0.5, alpha = 0.99, max_iter = 50, threshold = 0.001, 
-                           n_neighbors = 7, allow_negative = False)
+    #     print("non-negative weights")
+    #     demo(seed = i, per = 0.5, alpha = 0.99, max_iter = 50, threshold = 0.001, 
+    #                        n_neighbors = 7, allow_negative = False)
     
-        demo(seed = i, per = 0.5, alpha = 1, max_iter = 50, threshold = 0.001, 
-                           n_neighbors = 7, allow_negative = False) 
+    #     demo(seed = i, per = 0.5, alpha = 1, max_iter = 50, threshold = 0.001, 
+    #                        n_neighbors = 7, allow_negative = False) 

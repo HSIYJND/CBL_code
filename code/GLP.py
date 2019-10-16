@@ -185,25 +185,25 @@ def demo(seed = 0, per = 0.5, alpha = 0.99, max_iter = 1000, threshold = 0.001, 
     
     return accu
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    for i in range(10):
+#     for i in range(10):
 
-        print("adj")
-        demo(seed = i, per = 0.5, alpha = 0.99, max_iter = 1000, threshold = 0.001, gamma = 10, 
-                           n_neighbors = 7, method = "knn_adj")
-        demo(seed = i, per = 0.5, alpha = 1, max_iter = 1000, threshold = 0.001, gamma = 10, 
-                           n_neighbors = 7, method = "knn_adj")
+#         print("adj")
+#         demo(seed = i, per = 0.5, alpha = 0.99, max_iter = 1000, threshold = 0.001, gamma = 10, 
+#                            n_neighbors = 7, method = "knn_adj")
+#         demo(seed = i, per = 0.5, alpha = 1, max_iter = 1000, threshold = 0.001, gamma = 10, 
+#                            n_neighbors = 7, method = "knn_adj")
         
-        print("shortest-path")
-        demo(seed = i, per = 0.5, alpha = 0.99, max_iter = 1000, threshold = 0.001, gamma = 10, 
-                           n_neighbors = 7, method = "knn_shortest")
+#         print("shortest-path")
+#         demo(seed = i, per = 0.5, alpha = 0.99, max_iter = 1000, threshold = 0.001, gamma = 10, 
+#                            n_neighbors = 7, method = "knn_shortest")
     
-        demo(seed = i, per = 0.5, alpha = 1, max_iter = 1000, threshold = 0.001, gamma = 10, 
-                           n_neighbors = 7, method = "knn_shortest") 
+#         demo(seed = i, per = 0.5, alpha = 1, max_iter = 1000, threshold = 0.001, gamma = 10, 
+#                            n_neighbors = 7, method = "knn_shortest") 
 
-        print("laplacian")
-        demo(seed = i, per = 0.5, alpha = 0.99, max_iter = 1000, threshold = 0.001, gamma = 10, 
-                          n_neighbors = 7, method = "knn_laplacian")
-        demo(seed = i, per = 0.5, alpha = 1, max_iter = 1000, threshold = 0.001, gamma = 10, 
-                          n_neighbors = 7, method = "knn_laplacian")
+#         print("laplacian")
+#         demo(seed = i, per = 0.5, alpha = 0.99, max_iter = 1000, threshold = 0.001, gamma = 10, 
+#                           n_neighbors = 7, method = "knn_laplacian")
+#         demo(seed = i, per = 0.5, alpha = 1, max_iter = 1000, threshold = 0.001, gamma = 10, 
+#                           n_neighbors = 7, method = "knn_laplacian")

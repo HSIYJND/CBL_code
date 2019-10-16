@@ -4,7 +4,7 @@ import sklearn.tree
 import numpy as np
 from scipy.io import loadmat
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from IEEE_paper_linear_mapping_utilities import pixmat_between_two_dates, randmat_between_two_dates
+from linear_mapping_utilities import pixmat_between_two_dates, randmat_between_two_dates
 
 #%% BELOW ARE EXP WITHOUT CDA
 def pixmat_KNN_without_CDA_using_unbalanced_split(train_date_ = "130411", test_date_ = "140416", split = 0):

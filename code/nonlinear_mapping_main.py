@@ -1,5 +1,5 @@
-from IEEE_paper_nonlinear_mapping_model import NonlinearMappingDataset, NonlinearMappingPerceptron, NonlinearMappingMLP
-from IEEE_paper_nonlinear_mapping_utilities import nonlinear_pixmat_helper, nonlinear_randmat_helper
+from nonlinear_mapping_model import NonlinearMappingDataset, NonlinearMappingPerceptron, NonlinearMappingMLP
+from nonlinear_mapping_utilities import nonlinear_pixmat_helper, nonlinear_randmat_helper
 import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
@@ -166,62 +166,6 @@ def demo_one_batch():
                 nonlinear_mapping_one_batch(alg = alg, train_date = train_date, 
                                             test_date = test_date, data_path = "../data/", split = i)
 
-#if __name__ == "__main__":
-#    demo()
-#    demo_one_batch()
-    # nonlinear_mapping_one_batch
-    
-#    
-#    ########## FORWARD #########################################################################
-##    nonlinear_pixmat(alg = "pixmat", train_date = "130411", test_date = "140416", path = "../data/", lr = 0.001, 
-##                     num_epoch = 300, activation = "modified_relu_tanh", hidden_unit = 0, linear_init = True)
-##    
-##    nonlinear_pixmat(alg = "pixmat", train_date = "130411", test_date = "140416", path = "../data/", lr = 0.001, 
-##                     num_epoch = 300, activation = "modified_tanh", hidden_unit = 0, linear_init = True)
-##    
-#    ########### BACKWARD ###########################################################################
-#    print("Backward mapping without linear transfromation initialization")
-#    
-#    ############# randmat #######################################################################################
-#    nonlinear_mapping(alg = "pixmat", train_date = "130411", test_date = "140416", path = "../data/", lr = 0.001, 
-#                     num_epoch = 300, activation = "modified_relu_tanh", hidden_unit = 0, linear_init = True)
-#    
-#    nonlinear_mapping(alg = "randmat", train_date = "130411", test_date = "140416", path = "../data/", lr = 0.001, 
-#                     num_epoch = 300, activation = "modified_relu_tanh", hidden_unit = 0, linear_init = True)
-#    
-#    ########### BACKWARD ###########################################################################
-#    nonlinear_mapping(alg = "pixmat", train_date = "140416", test_date = "130411", path = "../data/", lr = 0.001, 
-#                     num_epoch = 300, activation = "modified_relu_tanh", hidden_unit = 0, linear_init = True)
-#    
-#    nonlinear_mapping(alg = "randmat", train_date = "140416", test_date = "130411", path = "../data/", lr = 0.001, 
-#                     num_epoch = 300, activation = "modified_relu_tanh", hidden_unit = 0, linear_init = True)
-#    
-#    
-##    nonlinear_pixmat(train_date = "130411", test_date = "140416", path = "../data/", lr = 0.001, 
-##                     num_epoch = 100, activation = "modified_tanh", hidden_unit = 0)
-##    nonlinear_randmat(train_date = "130411", test_date = "140416", path = "../data/", lr = 0.001, 
-##                     num_epoch = 100, activation = "modified_tanh", hidden_unit = 0)
-#    ########## BACKWARD ########################################################################
-#    
-##    nonlinear_pixmat(train_date = "140416", test_date = "130411", path = "../data/", lr = 0.001, 
-##                     num_epoch = 100, activation = "tanh", hidden_unit = 0)
-##    nonlinear_randmat(train_date = "140416", test_date = "130411", path = "../data/", lr = 0.001, 
-##                     num_epoch = 100, activation = "tanh", hidden_unit = 0)
-##    
-##    nonlinear_pixmat(train_date = "140416", test_date = "130411", path = "../data/", lr = 0.001, 
-##                     num_epoch = 100, activation = "sigmoid", hidden_unit = 0)
-##    nonlinear_randmat(train_date = "140416", test_date = "130411", path = "../data/", lr = 0.001, 
-##                     num_epoch = 100, activation = "sigmoid", hidden_unit = 0)
-#    
-#    
-##    for i in range(3, 180, 3):
-##        ########## FORWARD #########################################################################
-##        nonlinear_pixmat(train_date = "130411", test_date = "140416", path = "../data/", lr = 0.001, 
-##                         num_epoch = 300, activation = "sigmoid", hidden_unit = i)
-##        nonlinear_randmat(train_date = "130411", test_date = "140416", path = "../data/", lr = 0.001, 
-##                         num_epoch = 300, activation = "sigmoid", hidden_unit = i)
-##        ########## BACKWARD ########################################################################
-##        nonlinear_pixmat(train_date = "140416", test_date = "130411", path = "../data/", lr = 0.001, 
-##                         num_epoch = 300, activation = "sigmoid", hidden_unit = i)
-##        nonlinear_randmat(train_date = "140416", test_date = "130411", path = "../data/", lr = 0.001, 
-##                         num_epoch = 300, activation = "sigmoid", hidden_unit = i)
+if __name__ == "__main__":
+   demo()
+   demo_one_batch()

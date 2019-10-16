@@ -137,5 +137,3 @@ def nonlinear_randmat_helper(train_date = "130411", test_date = "140416", path =
     X_test = np.vstack(X_test).astype('float')
     A = np.linalg.lstsq(X_test, X_train, rcond = None)[0] 
     return X_train, X_test, A
-
-nonlinear_pixmat_helper()
