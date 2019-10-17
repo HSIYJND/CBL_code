@@ -13,7 +13,7 @@ from LLP import LLP
 from sklearn.metrics import balanced_accuracy_score
 
 def demo_ver3(seed = 0, train_date = "130411", split = 0):
-    data_path = "..data/"
+    data_path = "../data/"
     dataset = loadmat(data_path + "SusanSpectraProcessed" + train_date + ".mat", squeeze_me = True)
     # the split was made in matlab, index starts from 1 instead of 0
     train_indices = dataset["train_indices_splitter"][split] - 1 
@@ -53,7 +53,7 @@ def demo_ver3(seed = 0, train_date = "130411", split = 0):
     print("llp_accuracy,", llp_accuracy)
 
 
-def GLPdemo(data_path = "..data/"):
+def GLPdemo(data_path = "../data/"):
     x = loadmat(data_path + "exp1_130411_aggregated_dataset.mat", squeeze_me = True)
     data, labels = x["polygon_spectra"], x["polygon_labels"]
     
@@ -103,7 +103,7 @@ def GLPdemo(data_path = "..data/"):
             np.savetxt(result[0, 0] + "_" + result[0, 1] + "_" + method + "_result.csv", result, 
                        fmt='%s', delimiter='\t',header = "Alg\tClamping\tPropagation_Matrix\tNum_Samples\tUnlabeled_Rate\tAccuracy_Mean\tAccuracy_Std")
     
-def LLPdemo(data_path = "..data/"):
+def LLPdemo(data_path = "../data/"):
     x = loadmat(data_path + "exp1_130411_aggregated_dataset.mat", squeeze_me = True)
     data, labels = x["polygon_spectra"], x["polygon_labels"]
     for alpha in [0.99, 1]:
@@ -145,7 +145,7 @@ def LLPdemo(data_path = "..data/"):
             np.savetxt(result[0, 0] + "_" + result[0, 1] + "_" + result[0, 2] + "_result.csv", result, 
                        fmt='%s', delimiter='\t',header = "Alg\tClamping\tPropagation_Matrix\tNum_Samples\tUnlabeled_Rate\tAccuracy_Mean\tAccuracy_Std")
 
-def KNNdemo(data_path = "..data/"):
+def KNNdemo(data_path = "../data/"):
     x = loadmat(data_path + "exp1_130411_aggregated_dataset.mat", squeeze_me = True)
     data, labels = x["polygon_spectra"], x["polygon_labels"]
     result = np.zeros((19, 7)).astype(object)
