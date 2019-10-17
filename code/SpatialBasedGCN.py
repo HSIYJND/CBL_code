@@ -7,6 +7,7 @@ import numpy as np
 import torch.nn.functional as F
 import torch.utils.data as tdata
 
+#%% source code
 class SpatialBasedGraphConvLayer(Module):
 
     def __init__(self, in_features, out_features, bias = True):
@@ -40,7 +41,19 @@ class SpatialBasedGraphConvLayer(Module):
                + str(self._out_features) + ')'
 
 class SpatialBasedGraphConvNet(Module):
-    
+    """
+    Spatial-based Graph Convolution Network
+
+    Reference:
+    Kipf, T. N., & Welling, M. (2016). Semi-supervised classification with graph convolutional networks. arXiv preprint arXiv:1609.02907.
+
+    Inputs:
+    num_feature    :    integer
+    num_hidden     :    integer
+    num_class      :    integer
+    dropout        :    dropout rate, float in range [0, 1]
+    """
+
     def __init__(self, num_feature = 10, num_hidden = 10, num_class = 27, 
                  dropout = 0.1):
         
@@ -60,6 +73,7 @@ class SpatialBasedGraphConvNet(Module):
         """
         Given the training and testing data together.
         Train the GCN using labeled data and test on the unlabeled data.
+        Original paper's method, semi-supervised learning 
         
         Inputs:
         data        : (Nsample x Nfeatures) Numpy array   
@@ -149,6 +163,8 @@ class SpatialBasedGraphConvNet(Module):
                                   gamma = 20, num_epoch = 10000, lr = 0.001):
         """
         Given the training data only, train the GCN.
+        Modified method, different than the literature, more memory-efficient 
+
         Inputs:
         data        : (Nsample x Nfeatures) Numpy array   
         label       : (Nsample,) Numpy array, -1(unlabeled), 0,1,2,...,Nclass - 1
@@ -157,6 +173,9 @@ class SpatialBasedGraphConvNet(Module):
         gamma       : float, gamma for rbf kernel
         num_epoch   : int
         lr          : learning rate
+
+        Outputs:
+        None, just save a trained model
         """
         
         optimizer = torch.optim.Adam(self.parameters(), lr = lr)
@@ -225,6 +244,7 @@ class SpatialBasedGraphConvNet(Module):
     def test_individual_sample(self, test_data, method = "replacement", 
                                kernel = "knn", n_neighbors = 30, gamma = 20):
         """
+        Modified method
         During the training process, testing data is unseen.
         Encode the new testing sample back to the training manifold, 
         and then use the pretrained GCN to do classification.
@@ -236,6 +256,9 @@ class SpatialBasedGraphConvNet(Module):
         kernel      : Python String, "knn" / "rbf"
         n_neighbors : int, k for KNN
         gamma       : float, gamma for rbf kernel
+
+        Output:
+        predicts    : (Ntest) array, 0,1,2,...,Nclass-1
         """
         
         predicts = torch.zeros(len(test_data))
@@ -329,9 +352,12 @@ class SpatialBasedGraphConvNet(Module):
         Given a new different manifold.
         Without encoding the testing samples, simply use the pretrained filters for testing.
         
-        Input:
+        Inputs:
         test_data  :   (Ntest x Nfeatures) Numpy array   
         kernel     :   "knn" / "rbf"
+
+        Outputs:
+        predicts   :   (Ntest) array, 0,1,2,...,Nclass-1
         """
         if kernel == "knn":
             import sklearn
@@ -368,6 +394,7 @@ class SpatialBasedGraphConvNet(Module):
     def load_state_from_file(self, filepath):
         self.load_state_dict(torch.load(filepath))
 
+#%% demos
 def demo_iris_semi_supervised_training(seed = 0, unlabeled_rate = 0.2):
     from sklearn import datasets
     import sklearn.neighbors
@@ -630,29 +657,11 @@ def demo_cora_dataset_semi_supervised_training_testing():
     print("cora accuracy:", sklearn.metrics.accuracy_score(labels[test_idx], predicts))
 
 if __name__ == "__main__":
-#    demo_iris_semi_supervised_training()
-#    demo_iris_supervised_training_testing()
-#    demo_cora_dataset_supervised_training_testing()
-#    demo_cora_dataset_semi_supervised_training_testing()
-#    demo_cora_dataset_supervised_training_testing()
     
-#    demo_susan_dataset()
-#    demo_susan_dataset_supervised_training_testing()
-    
-#    for i in range(10, 30, 3):
-#        pixel_level_supervised_learning_parameter_tuning(seed = 0, nhid = 10, unlabeled_rate = 0.5)
+    for i in range(10, 30, 3):
+        pixel_level_supervised_learning_parameter_tuning(seed = 0, nhid = 10, unlabeled_rate = 0.5)
     
     for nhid in range(15, 27, 3):
         for i in range(10):
             print("seed:",i, "nhid:",nhid)
             parameter_tuning_semi_supervised(seed = i, nhid = nhid, unlabeled_rate = 0.5)
-    
-    #for nhid in range(15, 27, 3):
-    #    for i in range(10):
-    #        print("seed:",i, "nhid:",nhid)
-    #        parameter_tuning(seed = i, nhid = nhid, unlabeled_rate = 0.5)
-    
-    
-
-#    for nhid in range(10, 170, 10):
-#        pixel_level_semi_supervised_learning_parameter_tuning()
